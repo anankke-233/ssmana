@@ -30,6 +30,18 @@ cd /usr/src/node8.11.3/lib/node_modules/shadowsocks-manager/
 sudo npm install sqlite3 --save --unsafe-perm
 ln -s /usr/src/node8.11.3/lib/node_modules/shadowsocks-manager/bin/ssmgr /usr/bin/ssmgr
 #启动ss和ssmgr
+mkdir /root/.ssmgr
+cat > /root/.ssmgr/ss.yml<<-EOF
+type: s
+
+shadowsocks:
+  address: 127.0.0.1:4000
+manager:
+  address: 0.0.0.0:4001
+  password: 'babyshark@1989'
+db: 'ss.sqlite'
+
+EOF
 nohup ss-manager -m aes-128-gcm -u --manager-address 127.0.0.1:4000 >ss.log 2>&1 &
 nohup ssmgr -c ss.yml >ssmgr.log 2>&1 &
 
@@ -40,7 +52,7 @@ cat > /etc/rc.d/init.d/ssmana<<-EOF
 #description:ssmana
 
 nohup ss-manager -m aes-128-gcm -u --manager-address 127.0.0.1:4000 >ss.log 2>&1 &
-nohup ssmgr -c ss.yml >ssmgr.log 2>&1 &
+nohup ssmgr -c ss.yml --debug>ssmgr.log 2>&1 &
 
 EOF
 
