@@ -14,8 +14,8 @@ pre_install(){
 pre_install
 cd /etc/yum.repos.d
 wget https://copr.fedorainfracloud.org/coprs/librehat/shadowsocks/repo/epel-7/librehat-shadowsocks-epel-7.repo
-su -c 'yum update'
-su -c 'yum install shadowsocks-libev'
+su -c 'yum -y update'
+su -c 'yum -y install shadowsocks-libev'
 #安装nodejs
 cd /usr/src
 wget https://nodejs.org/dist/v8.11.3/node-v8.11.3-linux-x64.tar.xz
