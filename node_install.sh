@@ -1,4 +1,6 @@
 #!/bin/bash
+systemctl stop firewalld
+systemctl disable firewalld
 #安装sslibev
 pre_install(){
     if [ ! -f /etc/yum.repos.d/epel.repo ]; then
