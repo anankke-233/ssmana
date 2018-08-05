@@ -40,7 +40,7 @@ shadowsocks:
   address: 127.0.0.1:4000
 manager:
   address: 0.0.0.0:4001
-  password: 'babyshark@1989'
+  password: 'needupdate'
 db: 'ss.sqlite'
 
 EOF
